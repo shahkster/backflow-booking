@@ -5,7 +5,7 @@ import {
   Sparkles, Tag, ArrowDown, ShowerHead, ChevronDown, Clock, MapPin,
 } from "lucide-react";
 
-const WEB3FORMS_KEY = "YOUR_KEY_HERE";
+const WEB3FORMS_KEY = "9468d723-f46e-4981-b1c1-4545209072f7";
 // Google Maps API key — needed for address autocomplete
 // Get one free at https://console.cloud.google.com → APIs → Places API
 const GOOGLE_MAPS_KEY = "";

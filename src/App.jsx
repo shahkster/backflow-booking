@@ -123,6 +123,7 @@ export default function App() {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             access_key: WEB3FORMS_KEY,
+            cc: f.email,
             subject: `🔔 New Booking — ${f.name}`,
             from_name: "Backflow Booking",
             replyto: f.email,

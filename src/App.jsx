@@ -85,7 +85,7 @@ function AddressInput({ value, onChange }) {
         placeholder="Start typing your address..."
         value={value}
         onChange={e => onChange(e.target.value)}
-        className="w-full pl-10 pr-3 py-3 rounded-none border-2 border-slate-300 focus:border-[#d4a844] focus:outline-none text-sm"
+        className="w-full pl-10 pr-3 py-3 border border-slate-300 focus:border-[#d4a844] focus:ring-2 focus:ring-[#d4a844]/20 focus:outline-none text-sm transition"
         autoComplete="street-address"
         name="address"
       />
@@ -167,11 +167,12 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-slate-100" style={{fontFamily: "'Inter', sans-serif"}}>
+      <div className="h-1 bg-[#d4a844]"></div>
       <div className="max-w-3xl mx-auto px-4 py-6 sm:py-8">
 
         {/* HERO */}
         <div className="bg-white rounded-none shadow-sm overflow-hidden mb-5">
-          <div className="bg-[#0f2b46] text-white px-5 py-7 sm:px-10 sm:py-10 border-b-4 border-[#d4a844]">
+          <div className="bg-[#0f2b46] text-white px-5 py-10 sm:px-10 sm:py-14 border-b-4 border-[#d4a844]">
             <div className="flex items-center gap-3 mb-4">
               <div className="bg-white/15 rounded-sm p-2"><Droplet className="w-5 h-5 sm:w-6 sm:h-6" /></div>
               <div>
@@ -179,7 +180,7 @@ export default function App() {
                 <p className="text-[10px] sm:text-xs text-white/60">Great Neck Peninsula · Nassau County, NY</p>
               </div>
             </div>
-            <h1 className="text-2xl sm:text-4xl font-bold leading-tight mb-3">Backflow Testing &<br/>Sprinkler Services</h1>
+            <h1 className="text-3xl sm:text-5xl font-bold leading-tight mb-4 tracking-tight">Backflow Testing &<br/>Sprinkler Services</h1>
             <p className="text-slate-300 text-sm sm:text-base max-w-xl mb-5">Professional backflow prevention testing and sprinkler services for homes across the Great Neck peninsula. Compliant with Great Neck North Water Authority requirements. Book online. Know the price. Get it done.</p>
             <div className="flex flex-wrap gap-2">
               <button onClick={scrollToBook} className="inline-flex items-center gap-2 bg-[#d4a844] text-[#0f2b46] font-semibold text-sm px-5 py-2.5 rounded hover:bg-[#c49a3a] active:bg-[#b89030] transition"><ArrowDown className="w-4 h-4" /> Book Now</button>
@@ -187,18 +188,18 @@ export default function App() {
               <a href={`sms:${PHONE}&body=Hi, I'm interested in backflow testing / sprinkler services at my home in Great Neck. Can you let me know availability?`} className="inline-flex items-center gap-2 bg-white/10 text-white font-semibold text-sm px-4 py-2.5 rounded"><MessageSquare className="w-4 h-4" /> Text {PHONE_DISPLAY}</a>
             </div>
           </div>
-          <div className="grid grid-cols-2 divide-x divide-slate-200">
+          <div className="grid grid-cols-2 divide-x divide-slate-200 bg-slate-50">
             <div className="flex flex-col items-center py-3"><ShieldCheck className="w-5 h-5 text-[#d4a844] mb-1" /><p className="text-[10px] sm:text-[11px] font-semibold text-slate-700 text-center leading-tight">Reports Filed<br/>For You</p></div>
             <div className="flex flex-col items-center py-3"><Award className="w-5 h-5 text-[#d4a844] mb-1" /><p className="text-[10px] sm:text-[11px] font-semibold text-slate-700 text-center leading-tight">Local to<br/>Great Neck</p></div>
           </div>
         </div>
 
         {/* ABOUT */}
-        <div className="bg-white border border-slate-200 p-4 sm:p-5 mb-5">
-          <div className="flex flex-col items-center text-center sm:text-left sm:flex-row sm:items-start gap-3 sm:gap-4">
+        <div className="bg-white border-l-4 border-[#d4a844] shadow-sm p-5 sm:p-6 mb-5">
+          <div className="flex flex-col items-center text-center sm:text-left sm:flex-row sm:items-start gap-4 sm:gap-5">
             <img src="data:image/jpeg;base64,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" alt="Eitan Shahkoohi" className="w-12 h-12 sm:w-16 sm:h-16 rounded-full object-cover flex-shrink-0 border-2 border-[#d4a844]" />
             <div>
-              <h3 className="font-bold text-slate-800 text-sm sm:text-base">About {OWNER}</h3>
+              <h3 className="font-bold text-[#0f2b46] text-base sm:text-lg">About {OWNER}</h3>
               <p className="text-xs sm:text-sm text-slate-600 mt-1 leading-relaxed">I'm 17 years old and currently in high school right here in Great Neck. I started this business because I watched my own family deal with the headache of getting someone out for backflow testing every year. Calling around, waiting forever, no one showing up when they say they will. I figured if it's this frustrating for us, it's the same for every homeowner on the peninsula. So I got certified, got the equipment, and now I'm offering a simple, reliable service to my neighbors. You book online, you know the price upfront, and I actually show up.</p>
               <p className="text-[10px] sm:text-xs text-slate-500 mt-2 italic">Certification & credentials available on request.</p>
             </div>
@@ -206,11 +207,11 @@ export default function App() {
         </div>
 
         {/* SERVICES */}
-        <h2 className="text-lg sm:text-xl font-bold text-slate-800 mb-3 px-1">What We Do</h2>
+        <div className="mb-4 px-1"><h2 className="text-xl sm:text-2xl font-bold text-[#0f2b46] mb-1">What We Do</h2><div className="w-16 h-1 bg-[#d4a844]"></div></div>
         {SERVICES.map(svc => {
           const c = C[svc.color]; const Icon = svc.icon; const open = true;
           return (
-            <div key={svc.id} className="bg-white border border-slate-200 mb-3 overflow-hidden">
+            <div key={svc.id} className="bg-white border border-slate-200 mb-3 overflow-hidden shadow-sm hover:shadow-md transition-shadow">
               <div className="p-4 sm:p-5 flex items-center gap-3 sm:gap-4 text-left">
                 <div className={`w-11 h-11 sm:w-14 sm:h-14 rounded-sm ${c.bg} flex items-center justify-center flex-shrink-0`}><Icon className={`w-5 h-5 sm:w-7 sm:h-7 ${c.tx}`} /></div>
                 <div className="flex-1 min-w-0"><p className="font-bold text-slate-800 text-sm sm:text-base">{svc.name}</p><p className="text-xs sm:text-sm text-slate-500 truncate">{svc.short}</p></div>
@@ -243,13 +244,13 @@ export default function App() {
 
         {/* PRICING */}
         <div className="bg-white border border-slate-200 p-4 sm:p-5 mt-5 mb-5">
-          <h2 className="text-lg sm:text-xl font-bold text-slate-800 mb-1">Pricing</h2>
+          <h2 className="text-xl sm:text-2xl font-bold text-[#0f2b46] mb-1">Pricing</h2><div className="w-12 h-1 bg-[#d4a844] mb-2"></div>
           <p className="text-xs sm:text-sm text-slate-500 mb-4">The more you bundle, the more you save.</p>
           <div className="grid grid-cols-3 gap-2 sm:gap-3 mb-4">
             {[
               { n: 1, p: "$60", label: "1 service", badge: null, ring: "border-slate-200", bg: "" },
               { n: 2, p: "$110", label: "2 services", badge: "POPULAR", ring: "border-[#d4a844]", bg: "bg-[#d4a844]/10" },
-              { n: 3, p: "$150", label: "All 3", badge: "BEST DEAL", ring: "border-emerald-500", bg: "bg-emerald-50" },
+              { n: 3, p: "$150", label: "All 3", badge: "BEST DEAL", ring: "border-emerald-500 shadow-md", bg: "bg-emerald-50" },
             ].map(t => (
               <div key={t.n} className={`border-2 ${t.ring} p-3 sm:p-4 text-center ${t.bg} relative`}>
                 {t.badge && <div className={`absolute -top-2.5 left-1/2 -translate-x-1/2 ${t.n === 2 ? "bg-[#d4a844] text-[#0f2b46]" : "bg-emerald-600"} text-white text-[8px] sm:text-[10px] font-bold px-2 py-0.5 rounded-full whitespace-nowrap`}>{t.badge}</div>}
@@ -259,7 +260,7 @@ export default function App() {
               </div>
             ))}
           </div>
-          <div className="flex items-center gap-3 bg-slate-50 rounded-sm p-3">
+          <div className="flex items-center gap-3 bg-[#0f2b46]/5 border-l-4 border-[#d4a844] p-3">
             <DollarSign className="w-5 h-5 text-slate-500 flex-shrink-0" />
             <div><p className="text-xs sm:text-sm font-semibold text-slate-700">Payment at job site</p><p className="text-[11px] sm:text-xs text-slate-500">Zelle · Venmo · Cash. No extra fees</p></div>
           </div>
@@ -267,7 +268,7 @@ export default function App() {
 
         {/* BOOKING FORM */}
         <div ref={bookRef} className="bg-white border border-slate-200 p-4 sm:p-5 mb-6">
-          <h2 className="text-lg sm:text-xl font-bold text-slate-800 mb-5">Book an Appointment</h2>
+          <div className="mb-6"><h2 className="text-xl sm:text-2xl font-bold text-[#0f2b46] mb-1">Book an Appointment</h2><div className="w-16 h-1 bg-[#d4a844]"></div></div>
 
           <Lbl n={1} t="Select services" req />
           <div className="space-y-2 mb-2">
@@ -285,7 +286,7 @@ export default function App() {
             })}
           </div>
           {sel.length > 0 && (
-            <div className="bg-slate-50 rounded-sm p-3 mb-6 flex items-center justify-between">
+            <div className="bg-[#0f2b46]/5 border border-[#d4a844]/30 p-3 mb-6 flex items-center justify-between">
               <div className="flex items-center gap-2"><Tag className="w-4 h-4 text-[#d4a844]" /><span className="text-sm font-semibold text-slate-700">{sel.length} service{sel.length > 1 ? "s" : ""}</span></div>
               <div className="text-right"><span className="text-lg font-bold text-slate-800">${tot}</span>{sel.length > 1 && <span className="text-[10px] text-slate-500 block">${priceEach(sel.length)}/each</span>}</div>
             </div>
@@ -304,21 +305,21 @@ export default function App() {
             </div>
 
             <div className="bg-slate-50 rounded-sm p-4 mb-4">
-              <p className="font-bold text-slate-800 text-sm mb-2">Summary</p>
+              <p className="font-bold text-[#0f2b46] text-base mb-2">Summary</p>
               <div className="space-y-1 mb-2">{sel.map(s => <p key={s.id} className="text-xs text-slate-600 flex items-center gap-1.5"><Check className="w-3 h-3 text-[#d4a844]" />{s.name}</p>)}</div>
               <div className="flex justify-between font-bold text-slate-800 pt-2 border-t border-slate-200 text-sm"><span>Total</span><span>${tot}</span></div>
               <p className="text-[11px] text-slate-500 mt-1 flex items-center gap-1.5"><DollarSign className="w-3 h-3" />Zelle · Venmo · Cash. Paid at job site</p>
             </div>
 
             <button onClick={submit} disabled={!allFilled || busy}
-              className="w-full bg-[#0f2b46] hover:bg-[#162d44] active:bg-[#0a1f33] disabled:bg-slate-300 text-white font-semibold py-3.5 rounded text-sm sm:text-base transition">
+              className="w-full bg-[#0f2b46] hover:bg-[#162d44] active:bg-[#0a1f33] disabled:bg-slate-300 text-white font-semibold py-4 text-sm sm:text-base transition shadow-lg hover:shadow-xl border-t-2 border-[#d4a844]">
               {busy ? "Submitting..." : `Book Now · $${tot}`}
             </button>
           </>)}
         </div>
 
         {/* FOOTER */}
-        <div className="text-center pb-6 pt-4 border-t-4 border-[#d4a844] bg-[#0f2b46]">
+        <div className="text-center pb-8 pt-6 border-t-4 border-[#d4a844] bg-[#0f2b46]">
           <p className="text-xs text-white/80">Great Neck Backflow · Great Neck, NY · {PHONE_DISPLAY}</p>
         </div>
       </div>
@@ -328,4 +329,4 @@ export default function App() {
 
 function Lbl({ n, t, req }) { return <p className="text-[11px] sm:text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2"><span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-[#d4a844]/15 text-[#d4a844] text-[10px] font-bold mr-1.5">{n}</span>{t}{req && <span className="text-red-400 ml-1">*</span>}</p>; }
 function R({ l, v }) { return <div className="flex justify-between"><span className="text-slate-500">{l}</span><span className="font-medium text-right">{v}</span></div>; }
-function Inp({ icon, ph, v, set, type = "text" }) { return <div className="relative"><div className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">{icon}</div><input type={type} placeholder={ph} value={v} onChange={e => set(e.target.value)} required className="w-full pl-10 pr-3 py-3 rounded-none border-2 border-slate-300 focus:border-[#d4a844] focus:outline-none text-sm" /></div>; }
+function Inp({ icon, ph, v, set, type = "text" }) { return <div className="relative"><div className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">{icon}</div><input type={type} placeholder={ph} value={v} onChange={e => set(e.target.value)} required className="w-full pl-10 pr-3 py-3 border border-slate-300 focus:border-[#d4a844] focus:ring-2 focus:ring-[#d4a844]/20 focus:outline-none text-sm transition" /></div>; }

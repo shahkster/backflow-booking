@@ -184,7 +184,7 @@ export default function App() {
             <div className="flex items-center gap-3 mb-4">
               <div className="bg-white/15 rounded-lg p-2"><Droplet className="w-5 h-5 sm:w-6 sm:h-6" /></div>
               <div>
-                <p className="text-[10px] sm:text-xs font-semibold tracking-widest text-sky-200">SHAHKOOHI BACKFLOW SERVICES</p>
+                <p className="text-[10px] sm:text-xs font-semibold tracking-widest text-sky-200">GREAT NECK BACKFLOW</p>
                 <p className="text-[10px] sm:text-xs text-sky-100/80">Great Neck Peninsula · Nassau County, NY</p>
               </div>
             </div>
@@ -330,7 +330,7 @@ export default function App() {
         {/* FOOTER */}
         <div className="text-center pb-6">
           <p className="text-xs text-slate-400">{OWNER} · {PHONE_DISPLAY}</p>
-          <p className="text-[10px] text-slate-400 mt-1">Shahkoohi Backflow Services · Great Neck, NY</p>
+          <p className="text-[10px] text-slate-400 mt-1">GREAT NECK BACKFLOW · Great Neck, NY</p>
         </div>
       </div>
     </div>

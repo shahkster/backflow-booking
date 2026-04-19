@@ -300,8 +300,6 @@ export default function App() {
               <Inp icon={<Phone className="w-4 h-4" />} ph="Phone number" v={f.phone} set={v => setF({ ...f, phone: v })} type="tel" required />
               <div>
                 <Inp icon={<Mail className="w-4 h-4" />} ph="Email" v={f.email} set={v => setF({ ...f, email: v })} type="email" required />
-                <p className="text-[10px] sm:text-[11px] text-slate-400 mt-1 ml-1">You will receive an email of your booking here</p>
-              </div>
             </div>
 
             <div className="bg-[#0f2b46] rounded p-4 mb-4 text-white">

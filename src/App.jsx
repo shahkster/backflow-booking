@@ -123,7 +123,6 @@ export default function App() {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
             access_key: WEB3FORMS_KEY,
-            cc: f.email,
             subject: `🔔 New Booking — ${f.name}`,
             from_name: "Backflow Booking",
             replyto: f.email,
@@ -150,8 +149,8 @@ export default function App() {
     <div className="min-h-screen bg-gradient-to-br from-sky-50 to-blue-100 p-4 sm:p-6 flex items-center justify-center">
       <div className="max-w-md w-full bg-white rounded-2xl shadow-xl p-6 sm:p-8">
         <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-4"><Check className="w-7 h-7 sm:w-8 sm:h-8 text-green-600" /></div>
-        <h2 className="text-xl sm:text-2xl font-bold text-center text-slate-800 mb-1">Request Received!</h2>
-        <p className="text-center text-slate-500 mb-5 text-sm">A confirmation has been sent to {done.email}.<br/>We'll reach out to schedule your appointment.</p>
+        <h2 className="text-xl sm:text-2xl font-bold text-center text-slate-800 mb-1">Booking Received!</h2>
+        <p className="text-center text-slate-500 mb-5 text-sm">We have received your booking. We will text you shortly with details!</p>
         <div className="bg-slate-50 rounded-lg p-4 space-y-2 text-sm">
           <R l="Name" v={done.name} /><R l="Address" v={done.addr} />
           <div className="pt-2 border-t border-slate-200"><p className="text-xs text-slate-600">{done.svcs}</p></div>

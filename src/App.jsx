@@ -193,7 +193,8 @@ export default function App() {
             <div className="flex flex-wrap gap-2">
               <button onClick={scrollToBook} className="inline-flex items-center gap-2 bg-white text-sky-800 font-semibold text-sm px-5 py-2.5 rounded-lg hover:bg-sky-50 active:bg-sky-100 transition"><ArrowDown className="w-4 h-4" /> Book Now</button>
               <a href={`tel:${PHONE}`} className="inline-flex items-center gap-2 bg-white/15 text-white font-semibold text-sm px-4 py-2.5 rounded-lg"><Phone className="w-4 h-4" /> Call</a>
-              <a href={`sms:${PHONE}`} className="inline-flex items-center gap-2 bg-white/10 text-white font-semibold text-sm px-4 py-2.5 rounded-lg"><MessageSquare className="w-4 h-4" /> Text {PHONE_DISPLAY}</a>
+              <a href={`sms:${PHONE}&body=Hi, I'm interested in backflow testing / sprinkler services at my home in Great Neck. Can you let me know availability?`}
+ className="inline-flex items-center gap-2 bg-white/10 text-white font-semibold text-sm px-4 py-2.5 rounded-lg"><MessageSquare className="w-4 h-4" /> Text {PHONE_DISPLAY}</a>
             </div>
           </div>
           <div className="grid grid-cols-2 divide-x divide-slate-200">

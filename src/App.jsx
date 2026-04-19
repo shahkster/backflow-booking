@@ -85,7 +85,7 @@ function AddressInput({ value, onChange }) {
         placeholder="Start typing your address..."
         value={value}
         onChange={e => onChange(e.target.value)}
-        className="w-full pl-10 pr-3 py-3 rounded-lg border-2 border-slate-200 focus:border-[#d4a844] focus:outline-none text-sm"
+        className="w-full pl-10 pr-3 py-3 rounded-none border-2 border-slate-300 focus:border-[#d4a844] focus:outline-none text-sm"
         autoComplete="street-address"
         name="address"
       />
@@ -148,32 +148,32 @@ export default function App() {
   function reset() { setDone(null); setSel([]); setF({ name: "", addr: "", phone: "", email: "" }); window.scrollTo({ top: 0, behavior: "smooth" }); }
 
   if (done) return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-100 to-slate-200 p-4 sm:p-6 flex items-center justify-center">
-      <div className="max-w-md w-full bg-white rounded-2xl shadow-xl p-6 sm:p-8">
+    <div className="min-h-screen bg-slate-100 p-4 sm:p-6 flex items-center justify-center">
+      <div className="max-w-md w-full bg-white rounded-none shadow p-6 sm:p-8">
         <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-4"><Check className="w-7 h-7 sm:w-8 sm:h-8 text-green-600" /></div>
         <h2 className="text-xl sm:text-2xl font-bold text-center text-slate-800 mb-1">Request Received!</h2>
         <p className="text-center text-slate-500 mb-5 text-sm">A confirmation has been sent to {done.email}.<br/>We'll reach out to schedule your appointment.</p>
-        <div className="bg-slate-50 rounded-lg p-4 space-y-2 text-sm">
+        <div className="bg-slate-50 rounded-sm p-4 space-y-2 text-sm">
           <R l="Name" v={done.name} /><R l="Address" v={done.addr} />
           <div className="pt-2 border-t border-slate-200"><p className="text-xs text-slate-600">{done.svcs}</p></div>
           <div className="flex justify-between font-bold text-slate-800 pt-2 border-t border-slate-200"><span>Total</span><span>${done.tot}</span></div>
           <p className="text-xs text-slate-500">Zelle · Venmo · Cash — paid at job site</p>
         </div>
-        <button onClick={reset} className="w-full mt-5 bg-[#0f2b46] hover:bg-[#162d44] active:bg-[#0a1f33] text-white font-semibold py-3 rounded-lg transition">Done</button>
+        <button onClick={reset} className="w-full mt-5 bg-[#0f2b46] hover:bg-[#162d44] active:bg-[#0a1f33] text-white font-semibold py-3 rounded transition">Done</button>
         <p className="text-xs text-center text-slate-400 mt-4">Questions? Call or text {PHONE_DISPLAY}</p>
       </div>
     </div>
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-100 to-slate-200">
+    <div className="min-h-screen bg-slate-100">
       <div className="max-w-3xl mx-auto px-4 py-6 sm:py-8">
 
         {/* HERO */}
-        <div className="bg-white rounded-2xl shadow-lg overflow-hidden mb-5">
-          <div className="bg-[#0f2b46] text-white px-5 py-7 sm:px-10 sm:py-10">
+        <div className="bg-white rounded-none shadow-sm overflow-hidden mb-5">
+          <div className="bg-[#0f2b46] text-white px-5 py-7 sm:px-10 sm:py-10 border-b-4 border-[#d4a844]">
             <div className="flex items-center gap-3 mb-4">
-              <div className="bg-white/15 rounded-lg p-2"><Droplet className="w-5 h-5 sm:w-6 sm:h-6" /></div>
+              <div className="bg-white/15 rounded-sm p-2"><Droplet className="w-5 h-5 sm:w-6 sm:h-6" /></div>
               <div>
                 <p className="text-[10px] sm:text-xs font-semibold tracking-widest text-[#d4a844]">GREAT NECK BACKFLOW</p>
                 <p className="text-[10px] sm:text-xs text-white/60">Great Neck Peninsula · Nassau County, NY</p>
@@ -182,9 +182,9 @@ export default function App() {
             <h1 className="text-2xl sm:text-4xl font-bold leading-tight mb-3">Backflow Testing &<br/>Sprinkler Services</h1>
             <p className="text-slate-300 text-sm sm:text-base max-w-xl mb-5">Professional backflow prevention testing and sprinkler services for homes across the Great Neck peninsula. Compliant with Great Neck North Water Authority requirements. Book online — know the price — get it done.</p>
             <div className="flex flex-wrap gap-2">
-              <button onClick={scrollToBook} className="inline-flex items-center gap-2 bg-[#d4a844] text-[#0f2b46] font-semibold text-sm px-5 py-2.5 rounded-lg hover:bg-[#c49a3a] active:bg-[#b89030] transition"><ArrowDown className="w-4 h-4" /> Book Now</button>
-              <a href={`tel:${PHONE}`} className="inline-flex items-center gap-2 bg-white/15 text-white font-semibold text-sm px-4 py-2.5 rounded-lg"><Phone className="w-4 h-4" /> Call</a>
-              <a href={`sms:${PHONE}&body=Hi, I'm interested in backflow testing / sprinkler services at my home in Great Neck. Can you let me know availability?`} className="inline-flex items-center gap-2 bg-white/10 text-white font-semibold text-sm px-4 py-2.5 rounded-lg"><MessageSquare className="w-4 h-4" /> Text {PHONE_DISPLAY}</a>
+              <button onClick={scrollToBook} className="inline-flex items-center gap-2 bg-[#d4a844] text-[#0f2b46] font-semibold text-sm px-5 py-2.5 rounded hover:bg-[#c49a3a] active:bg-[#b89030] transition"><ArrowDown className="w-4 h-4" /> Book Now</button>
+              <a href={`tel:${PHONE}`} className="inline-flex items-center gap-2 bg-white/15 text-white font-semibold text-sm px-4 py-2.5 rounded"><Phone className="w-4 h-4" /> Call</a>
+              <a href={`sms:${PHONE}&body=Hi, I'm interested in backflow testing / sprinkler services at my home in Great Neck. Can you let me know availability?`} className="inline-flex items-center gap-2 bg-white/10 text-white font-semibold text-sm px-4 py-2.5 rounded"><MessageSquare className="w-4 h-4" /> Text {PHONE_DISPLAY}</a>
             </div>
           </div>
           <div className="grid grid-cols-2 divide-x divide-slate-200">
@@ -194,9 +194,9 @@ export default function App() {
         </div>
 
         {/* ABOUT */}
-        <div className="bg-white rounded-xl shadow-sm p-4 sm:p-5 mb-5">
+        <div className="bg-white border border-slate-200 p-4 sm:p-5 mb-5">
           <div className="flex items-start gap-3 sm:gap-4">
-            <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-[#0f2b46] text-white flex items-center justify-center text-base sm:text-lg font-bold flex-shrink-0">ES</div>
+            <img src="data:image/jpeg;base64,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" alt="Eitan Shahkoohi" className="w-12 h-12 sm:w-16 sm:h-16 rounded-full object-cover flex-shrink-0 border-2 border-[#d4a844]" />
             <div>
               <h3 className="font-bold text-slate-800 text-sm sm:text-base">About {OWNER}</h3>
               <p className="text-xs sm:text-sm text-slate-600 mt-1 leading-relaxed">I'm 17 years old and currently in high school right here in Great Neck. I started this business because I watched my own family deal with the headache of getting someone out for backflow testing every year — calling around, waiting forever, no one showing up when they say they will. I figured if it's this frustrating for us, it's the same for every homeowner on the peninsula. So I got certified, got the equipment, and now I'm offering a simple, reliable service to my neighbors. You book online, you know the price upfront, and I actually show up.</p>
@@ -210,14 +210,14 @@ export default function App() {
         {SERVICES.map(svc => {
           const c = C[svc.color]; const Icon = svc.icon; const open = true;
           return (
-            <div key={svc.id} className="bg-white rounded-xl shadow-sm mb-3 overflow-hidden">
+            <div key={svc.id} className="bg-white border border-slate-200 mb-3 overflow-hidden">
               <div className="p-4 sm:p-5 flex items-center gap-3 sm:gap-4 text-left">
-                <div className={`w-11 h-11 sm:w-14 sm:h-14 rounded-xl ${c.bg} flex items-center justify-center flex-shrink-0`}><Icon className={`w-5 h-5 sm:w-7 sm:h-7 ${c.tx}`} /></div>
+                <div className={`w-11 h-11 sm:w-14 sm:h-14 rounded-sm ${c.bg} flex items-center justify-center flex-shrink-0`}><Icon className={`w-5 h-5 sm:w-7 sm:h-7 ${c.tx}`} /></div>
                 <div className="flex-1 min-w-0"><p className="font-bold text-slate-800 text-sm sm:text-base">{svc.name}</p><p className="text-xs sm:text-sm text-slate-500 truncate">{svc.short}</p></div>
               </div>
               {true && (
                 <div className={`px-4 sm:px-5 pb-4 sm:pb-5 border-t ${c.bd}`}>
-                  <div className={`mt-3 sm:mt-4 rounded-xl overflow-hidden ${c.bg}`}>
+                  <div className={`mt-3 sm:mt-4 rounded-sm overflow-hidden ${c.bg}`}>
                     <img
                       src={svc.img}
                       alt={svc.name}
@@ -242,7 +242,7 @@ export default function App() {
         })}
 
         {/* PRICING */}
-        <div className="bg-white rounded-xl shadow-sm p-4 sm:p-5 mt-5 mb-5">
+        <div className="bg-white border border-slate-200 p-4 sm:p-5 mt-5 mb-5">
           <h2 className="text-lg sm:text-xl font-bold text-slate-800 mb-1">Pricing</h2>
           <p className="text-xs sm:text-sm text-slate-500 mb-4">The more you bundle, the more you save.</p>
           <div className="grid grid-cols-3 gap-2 sm:gap-3 mb-4">
@@ -251,7 +251,7 @@ export default function App() {
               { n: 2, p: "$110", label: "2 services", badge: "POPULAR", ring: "border-[#d4a844]", bg: "bg-[#d4a844]/10" },
               { n: 3, p: "$150", label: "All 3", badge: "BEST DEAL", ring: "border-emerald-500", bg: "bg-emerald-50" },
             ].map(t => (
-              <div key={t.n} className={`border-2 ${t.ring} rounded-xl p-3 sm:p-4 text-center ${t.bg} relative`}>
+              <div key={t.n} className={`border-2 ${t.ring} p-3 sm:p-4 text-center ${t.bg} relative`}>
                 {t.badge && <div className={`absolute -top-2.5 left-1/2 -translate-x-1/2 ${t.n === 2 ? "bg-[#d4a844] text-[#0f2b46]" : "bg-emerald-600"} text-white text-[8px] sm:text-[10px] font-bold px-2 py-0.5 rounded-full whitespace-nowrap`}>{t.badge}</div>}
                 <p className="text-xl sm:text-2xl font-bold text-slate-800">{t.p}</p>
                 <p className="text-[10px] sm:text-xs text-slate-500 mt-1">{t.label}</p>
@@ -259,14 +259,14 @@ export default function App() {
               </div>
             ))}
           </div>
-          <div className="flex items-center gap-3 bg-slate-50 rounded-lg p-3">
+          <div className="flex items-center gap-3 bg-slate-50 rounded-sm p-3">
             <DollarSign className="w-5 h-5 text-slate-500 flex-shrink-0" />
             <div><p className="text-xs sm:text-sm font-semibold text-slate-700">Payment at job site</p><p className="text-[11px] sm:text-xs text-slate-500">Zelle · Venmo · Cash — no extra fees</p></div>
           </div>
         </div>
 
         {/* BOOKING FORM */}
-        <div ref={bookRef} className="bg-white rounded-xl shadow-sm p-4 sm:p-5 mb-6">
+        <div ref={bookRef} className="bg-white border border-slate-200 p-4 sm:p-5 mb-6">
           <h2 className="text-lg sm:text-xl font-bold text-slate-800 mb-5">Book an Appointment</h2>
 
           <Lbl n={1} t="Select services" req />
@@ -274,9 +274,9 @@ export default function App() {
             {SERVICES.map(svc => {
               const on = sel.find(x => x.id === svc.id); const Icon = svc.icon; const c = C[svc.color];
               return (
-                <button key={svc.id} onClick={() => toggle(svc)} className={`w-full text-left p-3 rounded-lg border-2 transition active:scale-[0.98] ${on ? "border-[#d4a844] bg-[#d4a844]/10" : "border-slate-200 hover:border-[#d4a844]/40"}`}>
+                <button key={svc.id} onClick={() => toggle(svc)} className={`w-full text-left p-3 border-2 transition active:scale-[0.98] ${on ? "border-[#d4a844] bg-[#d4a844]/10" : "border-slate-200 hover:border-[#d4a844]/40"}`}>
                   <div className="flex items-center gap-3">
-                    <div className={`w-9 h-9 sm:w-10 sm:h-10 rounded-lg ${c.bg} flex items-center justify-center flex-shrink-0`}><Icon className={`w-4 h-4 sm:w-5 sm:h-5 ${c.tx}`} /></div>
+                    <div className={`w-9 h-9 sm:w-10 sm:h-10 rounded-sm ${c.bg} flex items-center justify-center flex-shrink-0`}><Icon className={`w-4 h-4 sm:w-5 sm:h-5 ${c.tx}`} /></div>
                     <div className="flex-1 min-w-0"><p className="font-semibold text-slate-800 text-sm">{svc.name}</p><p className="text-[11px] sm:text-xs text-slate-500 truncate">{svc.short}</p></div>
                     <div className={`w-6 h-6 rounded border-2 flex items-center justify-center flex-shrink-0 ${on ? "bg-[#d4a844] border-[#d4a844]" : "border-slate-300"}`}>{on && <Check className="w-4 h-4 text-white" />}</div>
                   </div>
@@ -285,7 +285,7 @@ export default function App() {
             })}
           </div>
           {sel.length > 0 && (
-            <div className="bg-slate-50 rounded-lg p-3 mb-6 flex items-center justify-between">
+            <div className="bg-slate-50 rounded-sm p-3 mb-6 flex items-center justify-between">
               <div className="flex items-center gap-2"><Tag className="w-4 h-4 text-[#d4a844]" /><span className="text-sm font-semibold text-slate-700">{sel.length} service{sel.length > 1 ? "s" : ""}</span></div>
               <div className="text-right"><span className="text-lg font-bold text-slate-800">${tot}</span>{sel.length > 1 && <span className="text-[10px] text-slate-500 block">${priceEach(sel.length)}/each</span>}</div>
             </div>
@@ -303,7 +303,7 @@ export default function App() {
               </div>
             </div>
 
-            <div className="bg-slate-50 rounded-xl p-4 mb-4">
+            <div className="bg-slate-50 rounded-sm p-4 mb-4">
               <p className="font-bold text-slate-800 text-sm mb-2">Summary</p>
               <div className="space-y-1 mb-2">{sel.map(s => <p key={s.id} className="text-xs text-slate-600 flex items-center gap-1.5"><Check className="w-3 h-3 text-[#d4a844]" />{s.name}</p>)}</div>
               <div className="flex justify-between font-bold text-slate-800 pt-2 border-t border-slate-200 text-sm"><span>Total</span><span>${tot}</span></div>
@@ -311,15 +311,15 @@ export default function App() {
             </div>
 
             <button onClick={submit} disabled={!allFilled || busy}
-              className="w-full bg-[#0f2b46] hover:bg-[#162d44] active:bg-[#0a1f33] disabled:bg-slate-300 text-white font-semibold py-3.5 rounded-lg text-sm sm:text-base transition">
+              className="w-full bg-[#0f2b46] hover:bg-[#162d44] active:bg-[#0a1f33] disabled:bg-slate-300 text-white font-semibold py-3.5 rounded text-sm sm:text-base transition">
               {busy ? "Submitting..." : `Book Now — $${tot}`}
             </button>
           </>)}
         </div>
 
         {/* FOOTER */}
-        <div className="text-center pb-6">
-          <p className="text-xs text-slate-400">Great Neck Backflow · Great Neck, NY · {PHONE_DISPLAY}</p>
+        <div className="text-center pb-6 pt-4 border-t-4 border-[#d4a844] bg-[#0f2b46]">
+          <p className="text-xs text-white/80">Great Neck Backflow · Great Neck, NY · {PHONE_DISPLAY}</p>
         </div>
       </div>
     </div>
@@ -328,4 +328,4 @@ export default function App() {
 
 function Lbl({ n, t, req }) { return <p className="text-[11px] sm:text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2"><span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-[#d4a844]/15 text-[#d4a844] text-[10px] font-bold mr-1.5">{n}</span>{t}{req && <span className="text-red-400 ml-1">*</span>}</p>; }
 function R({ l, v }) { return <div className="flex justify-between"><span className="text-slate-500">{l}</span><span className="font-medium text-right">{v}</span></div>; }
-function Inp({ icon, ph, v, set, type = "text" }) { return <div className="relative"><div className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">{icon}</div><input type={type} placeholder={ph} value={v} onChange={e => set(e.target.value)} required className="w-full pl-10 pr-3 py-3 rounded-lg border-2 border-slate-200 focus:border-[#d4a844] focus:outline-none text-sm" /></div>; }
+function Inp({ icon, ph, v, set, type = "text" }) { return <div className="relative"><div className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">{icon}</div><input type={type} placeholder={ph} value={v} onChange={e => set(e.target.value)} required className="w-full pl-10 pr-3 py-3 rounded-none border-2 border-slate-300 focus:border-[#d4a844] focus:outline-none text-sm" /></div>; }

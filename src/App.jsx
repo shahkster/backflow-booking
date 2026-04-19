@@ -4,6 +4,7 @@ import {
   MessageSquare, ShieldCheck, Award, DollarSign,
   Sparkles, Tag, ArrowDown, ShowerHead, ChevronDown, Clock, MapPin,
 } from "lucide-react";
+import { Analytics } from '@vercel/analytics/react';
 
 const WEB3FORMS_KEY = "9468d723-f46e-4981-b1c1-4545209072f7";
 // Google Maps API key — needed for address autocomplete
@@ -158,6 +159,7 @@ export default function App() {
 
   if (done) return (
     <div className="min-h-screen bg-gradient-to-br from-sky-50 to-blue-100 p-4 sm:p-6 flex items-center justify-center">
+      <Analytics />
       <div className="max-w-md w-full bg-white rounded-2xl shadow-xl p-6 sm:p-8">
         <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-4"><Check className="w-7 h-7 sm:w-8 sm:h-8 text-green-600" /></div>
         <h2 className="text-xl sm:text-2xl font-bold text-center text-slate-800 mb-1">Request Received!</h2>
@@ -176,6 +178,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-sky-50 to-blue-100">
+      <Analytics />
       <div className="max-w-3xl mx-auto px-4 py-6 sm:py-8">
 
         {/* HERO */}

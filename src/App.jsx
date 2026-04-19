@@ -189,7 +189,7 @@ export default function App() {
               </div>
             </div>
             <h1 className="text-2xl sm:text-4xl font-bold leading-tight mb-3">Backflow Testing &<br/>Sprinkler Services</h1>
-            <p className="text-sky-100 text-sm sm:text-base max-w-xl mb-5">Professional backflow prevention testing and sprinkler services for homes across the Great Neck peninsula. Book online — know the price — get it done.</p>
+            <p className="text-sky-100 text-sm sm:text-base max-w-xl mb-5">Professional backflow prevention testing and sprinkler services for homes across the Great Neck peninsula. Compliant with Great Neck North Water Authority requirements. Book online — know the price — get it done.</p>
             <div className="flex flex-wrap gap-2">
               <button onClick={scrollToBook} className="inline-flex items-center gap-2 bg-white text-sky-800 font-semibold text-sm px-5 py-2.5 rounded-lg hover:bg-sky-50 active:bg-sky-100 transition"><ArrowDown className="w-4 h-4" /> Book Now</button>
               <a href={`tel:${PHONE}`} className="inline-flex items-center gap-2 bg-white/15 text-white font-semibold text-sm px-4 py-2.5 rounded-lg"><Phone className="w-4 h-4" /> Call</a>

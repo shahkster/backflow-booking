@@ -8,7 +8,7 @@ import {
 const WEB3FORMS_KEY = "9468d723-f46e-4981-b1c1-4545209072f7";
 // Google Maps API key — needed for address autocomplete
 // Get one free at https://console.cloud.google.com → APIs → Places API
-const GOOGLE_MAPS_KEY = "";
+const GOOGLE_MAPS_KEY = "AIzaSyDPfspCY5u7j_ApTM-K7qugyAXvSApIXEk";
 const PHONE = "5164186348";
 const PHONE_DISPLAY = "(516) 418-6348";
 const OWNER = "Eitan Shahkoohi";

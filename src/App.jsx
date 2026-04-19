@@ -12,6 +12,7 @@ const GOOGLE_MAPS_KEY = "AIzaSyDPfspCY5u7j_ApTM-K7qugyAXvSApIXEk";
 const PHONE = "5164186348";
 const PHONE_DISPLAY = "(516) 418-6348";
 const OWNER = "Eitan Shahkoohi";
+const OWNER_EMAIL = "eshakster@gmail.com";
 
 const SERVICES = [
   {
@@ -35,7 +36,7 @@ const SERVICES = [
 ];
 
 const C = {
-  sky: { bg: "bg-sky-100", tx: "text-sky-700", bd: "border-sky-200" },
+  sky: { bg: "bg-blue-100", tx: "text-[#d4a844]", bd: "border-blue-200" },
   emerald: { bg: "bg-emerald-100", tx: "text-emerald-700", bd: "border-emerald-200" },
   amber: { bg: "bg-amber-100", tx: "text-amber-700", bd: "border-amber-200" },
 };
@@ -84,7 +85,7 @@ function AddressInput({ value, onChange }) {
         placeholder="Start typing your address..."
         value={value}
         onChange={e => onChange(e.target.value)}
-        className="w-full pl-10 pr-3 py-3 rounded-lg border-2 border-slate-200 focus:border-sky-500 focus:outline-none text-sm"
+        className="w-full pl-10 pr-3 py-3 rounded-lg border-2 border-slate-200 focus:border-[#d4a844] focus:outline-none text-sm"
         autoComplete="street-address"
         name="address"
       />
@@ -124,8 +125,8 @@ export default function App() {
           body: JSON.stringify({
             access_key: WEB3FORMS_KEY,
             subject: `🔔 New Booking — ${f.name}`,
-            from_name: "Backflow Booking",
-            replyto: f.email,
+            from_name: "Great Neck Backflow",
+            replyto: OWNER_EMAIL,
             Name: f.name,
             Phone: f.phone,
             Email: f.email,
@@ -137,6 +138,7 @@ export default function App() {
           }),
         });
       } catch (e) { console.error(e); }
+
     }
 
     setDone({ name: f.name, email: f.email, addr: f.addr, svcs, tot });
@@ -146,55 +148,55 @@ export default function App() {
   function reset() { setDone(null); setSel([]); setF({ name: "", addr: "", phone: "", email: "" }); window.scrollTo({ top: 0, behavior: "smooth" }); }
 
   if (done) return (
-    <div className="min-h-screen bg-gradient-to-br from-sky-50 to-blue-100 p-4 sm:p-6 flex items-center justify-center">
+    <div className="min-h-screen bg-gradient-to-br from-slate-100 to-slate-200 p-4 sm:p-6 flex items-center justify-center">
       <div className="max-w-md w-full bg-white rounded-2xl shadow-xl p-6 sm:p-8">
         <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-4"><Check className="w-7 h-7 sm:w-8 sm:h-8 text-green-600" /></div>
-        <h2 className="text-xl sm:text-2xl font-bold text-center text-slate-800 mb-1">Booking Received!</h2>
-        <p className="text-center text-slate-500 mb-5 text-sm">We have received your booking. We will text you shortly with details!</p>
+        <h2 className="text-xl sm:text-2xl font-bold text-center text-slate-800 mb-1">Request Received!</h2>
+        <p className="text-center text-slate-500 mb-5 text-sm">A confirmation has been sent to {done.email}.<br/>We'll reach out to schedule your appointment.</p>
         <div className="bg-slate-50 rounded-lg p-4 space-y-2 text-sm">
           <R l="Name" v={done.name} /><R l="Address" v={done.addr} />
           <div className="pt-2 border-t border-slate-200"><p className="text-xs text-slate-600">{done.svcs}</p></div>
           <div className="flex justify-between font-bold text-slate-800 pt-2 border-t border-slate-200"><span>Total</span><span>${done.tot}</span></div>
           <p className="text-xs text-slate-500">Zelle · Venmo · Cash — paid at job site</p>
         </div>
-        <button onClick={reset} className="w-full mt-5 bg-sky-600 hover:bg-sky-700 active:bg-sky-800 text-white font-semibold py-3 rounded-lg transition">Done</button>
+        <button onClick={reset} className="w-full mt-5 bg-[#0f2b46] hover:bg-[#162d44] active:bg-[#0a1f33] text-white font-semibold py-3 rounded-lg transition">Done</button>
         <p className="text-xs text-center text-slate-400 mt-4">Questions? Call or text {PHONE_DISPLAY}</p>
       </div>
     </div>
   );
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-sky-50 to-blue-100">
+    <div className="min-h-screen bg-gradient-to-br from-slate-100 to-slate-200">
       <div className="max-w-3xl mx-auto px-4 py-6 sm:py-8">
 
         {/* HERO */}
         <div className="bg-white rounded-2xl shadow-lg overflow-hidden mb-5">
-          <div className="bg-gradient-to-r from-sky-700 to-blue-800 text-white px-5 py-7 sm:px-10 sm:py-10">
+          <div className="bg-[#0f2b46] text-white px-5 py-7 sm:px-10 sm:py-10">
             <div className="flex items-center gap-3 mb-4">
               <div className="bg-white/15 rounded-lg p-2"><Droplet className="w-5 h-5 sm:w-6 sm:h-6" /></div>
               <div>
-                <p className="text-[10px] sm:text-xs font-semibold tracking-widest text-sky-200">GREAT NECK BACKFLOW</p>
-                <p className="text-[10px] sm:text-xs text-sky-100/80">Great Neck Peninsula · Nassau County, NY</p>
+                <p className="text-[10px] sm:text-xs font-semibold tracking-widest text-[#d4a844]">GREAT NECK BACKFLOW</p>
+                <p className="text-[10px] sm:text-xs text-white/60">Great Neck Peninsula · Nassau County, NY</p>
               </div>
             </div>
             <h1 className="text-2xl sm:text-4xl font-bold leading-tight mb-3">Backflow Testing &<br/>Sprinkler Services</h1>
-            <p className="text-sky-100 text-sm sm:text-base max-w-xl mb-5">Professional backflow prevention testing and sprinkler services for homes across the Great Neck peninsula. Compliant with Great Neck North Water Authority requirements. Book online — know the price — get it done.</p>
+            <p className="text-slate-300 text-sm sm:text-base max-w-xl mb-5">Professional backflow prevention testing and sprinkler services for homes across the Great Neck peninsula. Compliant with Great Neck North Water Authority requirements. Book online — know the price — get it done.</p>
             <div className="flex flex-wrap gap-2">
-              <button onClick={scrollToBook} className="inline-flex items-center gap-2 bg-white text-sky-800 font-semibold text-sm px-5 py-2.5 rounded-lg hover:bg-sky-50 active:bg-sky-100 transition"><ArrowDown className="w-4 h-4" /> Book Now</button>
+              <button onClick={scrollToBook} className="inline-flex items-center gap-2 bg-[#d4a844] text-[#0f2b46] font-semibold text-sm px-5 py-2.5 rounded-lg hover:bg-[#c49a3a] active:bg-[#b89030] transition"><ArrowDown className="w-4 h-4" /> Book Now</button>
               <a href={`tel:${PHONE}`} className="inline-flex items-center gap-2 bg-white/15 text-white font-semibold text-sm px-4 py-2.5 rounded-lg"><Phone className="w-4 h-4" /> Call</a>
               <a href={`sms:${PHONE}&body=Hi, I'm interested in backflow testing / sprinkler services at my home in Great Neck. Can you let me know availability?`} className="inline-flex items-center gap-2 bg-white/10 text-white font-semibold text-sm px-4 py-2.5 rounded-lg"><MessageSquare className="w-4 h-4" /> Text {PHONE_DISPLAY}</a>
             </div>
           </div>
           <div className="grid grid-cols-2 divide-x divide-slate-200">
-            <div className="flex flex-col items-center py-3"><ShieldCheck className="w-5 h-5 text-sky-700 mb-1" /><p className="text-[10px] sm:text-[11px] font-semibold text-slate-700 text-center leading-tight">Reports Filed<br/>For You</p></div>
-            <div className="flex flex-col items-center py-3"><Award className="w-5 h-5 text-sky-700 mb-1" /><p className="text-[10px] sm:text-[11px] font-semibold text-slate-700 text-center leading-tight">Local to<br/>Great Neck</p></div>
+            <div className="flex flex-col items-center py-3"><ShieldCheck className="w-5 h-5 text-[#d4a844] mb-1" /><p className="text-[10px] sm:text-[11px] font-semibold text-slate-700 text-center leading-tight">Reports Filed<br/>For You</p></div>
+            <div className="flex flex-col items-center py-3"><Award className="w-5 h-5 text-[#d4a844] mb-1" /><p className="text-[10px] sm:text-[11px] font-semibold text-slate-700 text-center leading-tight">Local to<br/>Great Neck</p></div>
           </div>
         </div>
 
         {/* ABOUT */}
         <div className="bg-white rounded-xl shadow-sm p-4 sm:p-5 mb-5">
           <div className="flex items-start gap-3 sm:gap-4">
-            <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-sky-600 text-white flex items-center justify-center text-base sm:text-lg font-bold flex-shrink-0">ES</div>
+            <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-[#0f2b46] text-white flex items-center justify-center text-base sm:text-lg font-bold flex-shrink-0">ES</div>
             <div>
               <h3 className="font-bold text-slate-800 text-sm sm:text-base">About {OWNER}</h3>
               <p className="text-xs sm:text-sm text-slate-600 mt-1 leading-relaxed">I'm 17 years old and currently in high school right here in Great Neck. I started this business because I watched my own family deal with the headache of getting someone out for backflow testing every year — calling around, waiting forever, no one showing up when they say they will. I figured if it's this frustrating for us, it's the same for every homeowner on the peninsula. So I got certified, got the equipment, and now I'm offering a simple, reliable service to my neighbors. You book online, you know the price upfront, and I actually show up.</p>
@@ -246,14 +248,14 @@ export default function App() {
           <div className="grid grid-cols-3 gap-2 sm:gap-3 mb-4">
             {[
               { n: 1, p: "$60", label: "1 service", badge: null, ring: "border-slate-200", bg: "" },
-              { n: 2, p: "$110", label: "2 services", badge: "POPULAR", ring: "border-sky-500", bg: "bg-sky-50" },
+              { n: 2, p: "$110", label: "2 services", badge: "POPULAR", ring: "border-[#d4a844]", bg: "bg-[#d4a844]/10" },
               { n: 3, p: "$150", label: "All 3", badge: "BEST DEAL", ring: "border-emerald-500", bg: "bg-emerald-50" },
             ].map(t => (
               <div key={t.n} className={`border-2 ${t.ring} rounded-xl p-3 sm:p-4 text-center ${t.bg} relative`}>
-                {t.badge && <div className={`absolute -top-2.5 left-1/2 -translate-x-1/2 ${t.n === 2 ? "bg-sky-600" : "bg-emerald-600"} text-white text-[8px] sm:text-[10px] font-bold px-2 py-0.5 rounded-full whitespace-nowrap`}>{t.badge}</div>}
+                {t.badge && <div className={`absolute -top-2.5 left-1/2 -translate-x-1/2 ${t.n === 2 ? "bg-[#d4a844] text-[#0f2b46]" : "bg-emerald-600"} text-white text-[8px] sm:text-[10px] font-bold px-2 py-0.5 rounded-full whitespace-nowrap`}>{t.badge}</div>}
                 <p className="text-xl sm:text-2xl font-bold text-slate-800">{t.p}</p>
                 <p className="text-[10px] sm:text-xs text-slate-500 mt-1">{t.label}</p>
-                {t.n > 1 && <p className={`text-[9px] sm:text-[10px] ${t.n === 2 ? "text-sky-700" : "text-emerald-700"} font-semibold mt-0.5`}>save ${60 * t.n - (t.n === 2 ? 110 : 150)}</p>}
+                {t.n > 1 && <p className={`text-[9px] sm:text-[10px] ${t.n === 2 ? "text-[#d4a844]" : "text-emerald-700"} font-semibold mt-0.5`}>save ${60 * t.n - (t.n === 2 ? 110 : 150)}</p>}
               </div>
             ))}
           </div>
@@ -272,11 +274,11 @@ export default function App() {
             {SERVICES.map(svc => {
               const on = sel.find(x => x.id === svc.id); const Icon = svc.icon; const c = C[svc.color];
               return (
-                <button key={svc.id} onClick={() => toggle(svc)} className={`w-full text-left p-3 rounded-lg border-2 transition active:scale-[0.98] ${on ? "border-sky-500 bg-sky-50" : "border-slate-200 hover:border-sky-300"}`}>
+                <button key={svc.id} onClick={() => toggle(svc)} className={`w-full text-left p-3 rounded-lg border-2 transition active:scale-[0.98] ${on ? "border-[#d4a844] bg-[#d4a844]/10" : "border-slate-200 hover:border-[#d4a844]/40"}`}>
                   <div className="flex items-center gap-3">
                     <div className={`w-9 h-9 sm:w-10 sm:h-10 rounded-lg ${c.bg} flex items-center justify-center flex-shrink-0`}><Icon className={`w-4 h-4 sm:w-5 sm:h-5 ${c.tx}`} /></div>
                     <div className="flex-1 min-w-0"><p className="font-semibold text-slate-800 text-sm">{svc.name}</p><p className="text-[11px] sm:text-xs text-slate-500 truncate">{svc.short}</p></div>
-                    <div className={`w-6 h-6 rounded border-2 flex items-center justify-center flex-shrink-0 ${on ? "bg-sky-600 border-sky-600" : "border-slate-300"}`}>{on && <Check className="w-4 h-4 text-white" />}</div>
+                    <div className={`w-6 h-6 rounded border-2 flex items-center justify-center flex-shrink-0 ${on ? "bg-[#d4a844] border-[#d4a844]" : "border-slate-300"}`}>{on && <Check className="w-4 h-4 text-white" />}</div>
                   </div>
                 </button>
               );
@@ -284,7 +286,7 @@ export default function App() {
           </div>
           {sel.length > 0 && (
             <div className="bg-slate-50 rounded-lg p-3 mb-6 flex items-center justify-between">
-              <div className="flex items-center gap-2"><Tag className="w-4 h-4 text-sky-600" /><span className="text-sm font-semibold text-slate-700">{sel.length} service{sel.length > 1 ? "s" : ""}</span></div>
+              <div className="flex items-center gap-2"><Tag className="w-4 h-4 text-[#d4a844]" /><span className="text-sm font-semibold text-slate-700">{sel.length} service{sel.length > 1 ? "s" : ""}</span></div>
               <div className="text-right"><span className="text-lg font-bold text-slate-800">${tot}</span>{sel.length > 1 && <span className="text-[10px] text-slate-500 block">${priceEach(sel.length)}/each</span>}</div>
             </div>
           )}
@@ -293,7 +295,7 @@ export default function App() {
             <Lbl n={2} t="Your information" req />
             <div className="space-y-3 mb-4">
               <Inp icon={<User className="w-4 h-4" />} ph="Full name" v={f.name} set={v => setF({ ...f, name: v })} required />
-              <AddressInput value={f.addr} onChange={v => setF(prev => ({ ...prev, addr: v }))} />
+              <AddressInput value={f.addr} onChange={v => setF({ ...f, addr: v })} />
               <Inp icon={<Phone className="w-4 h-4" />} ph="Phone number" v={f.phone} set={v => setF({ ...f, phone: v })} type="tel" required />
               <div>
                 <Inp icon={<Mail className="w-4 h-4" />} ph="Email" v={f.email} set={v => setF({ ...f, email: v })} type="email" required />
@@ -303,13 +305,13 @@ export default function App() {
 
             <div className="bg-slate-50 rounded-xl p-4 mb-4">
               <p className="font-bold text-slate-800 text-sm mb-2">Summary</p>
-              <div className="space-y-1 mb-2">{sel.map(s => <p key={s.id} className="text-xs text-slate-600 flex items-center gap-1.5"><Check className="w-3 h-3 text-sky-600" />{s.name}</p>)}</div>
+              <div className="space-y-1 mb-2">{sel.map(s => <p key={s.id} className="text-xs text-slate-600 flex items-center gap-1.5"><Check className="w-3 h-3 text-[#d4a844]" />{s.name}</p>)}</div>
               <div className="flex justify-between font-bold text-slate-800 pt-2 border-t border-slate-200 text-sm"><span>Total</span><span>${tot}</span></div>
               <p className="text-[11px] text-slate-500 mt-1 flex items-center gap-1.5"><DollarSign className="w-3 h-3" />Zelle · Venmo · Cash — paid at job site</p>
             </div>
 
             <button onClick={submit} disabled={!allFilled || busy}
-              className="w-full bg-sky-600 hover:bg-sky-700 active:bg-sky-800 disabled:bg-slate-300 text-white font-semibold py-3.5 rounded-lg text-sm sm:text-base transition">
+              className="w-full bg-[#0f2b46] hover:bg-[#162d44] active:bg-[#0a1f33] disabled:bg-slate-300 text-white font-semibold py-3.5 rounded-lg text-sm sm:text-base transition">
               {busy ? "Submitting..." : `Book Now — $${tot}`}
             </button>
           </>)}
@@ -324,6 +326,6 @@ export default function App() {
   );
 }
 
-function Lbl({ n, t, req }) { return <p className="text-[11px] sm:text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2"><span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-sky-100 text-sky-700 text-[10px] font-bold mr-1.5">{n}</span>{t}{req && <span className="text-red-400 ml-1">*</span>}</p>; }
+function Lbl({ n, t, req }) { return <p className="text-[11px] sm:text-xs font-semibold text-slate-500 uppercase tracking-wide mb-2"><span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-[#d4a844]/15 text-[#d4a844] text-[10px] font-bold mr-1.5">{n}</span>{t}{req && <span className="text-red-400 ml-1">*</span>}</p>; }
 function R({ l, v }) { return <div className="flex justify-between"><span className="text-slate-500">{l}</span><span className="font-medium text-right">{v}</span></div>; }
-function Inp({ icon, ph, v, set, type = "text" }) { return <div className="relative"><div className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">{icon}</div><input type={type} placeholder={ph} value={v} onChange={e => set(e.target.value)} required className="w-full pl-10 pr-3 py-3 rounded-lg border-2 border-slate-200 focus:border-sky-500 focus:outline-none text-sm" /></div>; }
+function Inp({ icon, ph, v, set, type = "text" }) { return <div className="relative"><div className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">{icon}</div><input type={type} placeholder={ph} value={v} onChange={e => set(e.target.value)} required className="w-full pl-10 pr-3 py-3 rounded-lg border-2 border-slate-200 focus:border-[#d4a844] focus:outline-none text-sm" /></div>; }

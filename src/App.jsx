@@ -330,8 +330,7 @@ export default function App() {
 
         {/* FOOTER */}
         <div className="text-center pb-6">
-          <p className="text-xs text-slate-400">{OWNER} · {PHONE_DISPLAY}</p>
-          <p className="text-[10px] text-slate-400 mt-1">GREAT NECK BACKFLOW · Great Neck, NY</p>
+          <p className="text-xs text-slate-400">Great Neck Backflow · Great Neck, NY · {PHONE_DISPLAY}</p>
         </div>
       </div>
     </div>

@@ -299,8 +299,9 @@ export default function App() {
               <AddressInput value={f.addr} onChange={v => setF(prev => ({ ...prev, addr: v }))} />
               <Inp icon={<Phone className="w-4 h-4" />} ph="Phone number" v={f.phone} set={v => setF({ ...f, phone: v })} type="tel" required />
               <div>
-                <Inp icon={<Mail className="w-4 h-4" />} ph="Email" v={f.email} set={v => setF({ ...f, email: v })} type="email" required />
-            </div>
+  <Inp icon={<Mail className="w-4 h-4" />} ph="Email" v={f.email} set={v => setF({ .f, email: v })} type="email" required />
+  
+</div>
 
             <div className="bg-[#0f2b46] rounded p-4 mb-4 text-white">
               <p className="font-bold text-[#d4a844] text-base mb-2">Summary</p>

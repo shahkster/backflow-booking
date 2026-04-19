@@ -296,7 +296,7 @@ export default function App() {
             <Lbl n={2} t="Your information" req />
             <div className="space-y-3 mb-4">
               <Inp icon={<User className="w-4 h-4" />} ph="Full name" v={f.name} set={v => setF({ ...f, name: v })} required />
-              <AddressInput value={f.addr} onChange={v => setF({ ...f, addr: v })} />
+              <AddressInput value={f.addr} onChange={v => setF(prev => ({ ...prev, addr: v }))} />
               <Inp icon={<Phone className="w-4 h-4" />} ph="Phone number" v={f.phone} set={v => setF({ ...f, phone: v })} type="tel" required />
               <div>
                 <Inp icon={<Mail className="w-4 h-4" />} ph="Email" v={f.email} set={v => setF({ ...f, email: v })} type="email" required />

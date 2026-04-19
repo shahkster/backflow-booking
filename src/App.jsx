@@ -108,7 +108,7 @@ export default function App() {
   const [f, setF] = useState({ name: "", addr: "", phone: "", email: "" });
   const [done, setDone] = useState(null);
   const [busy, setBusy] = useState(false);
-  const [exp, setExp] = useState(null);
+  const [exp, setExp] = useState("all");
   const bookRef = useRef(null);
 
   const tot = price(sel.length);
@@ -221,12 +221,12 @@ export default function App() {
           const c = C[svc.color]; const Icon = svc.icon; const open = exp === svc.id;
           return (
             <div key={svc.id} className="bg-white rounded-xl shadow-sm mb-3 overflow-hidden">
-              <button onClick={() => setExp(open ? null : svc.id)} className="w-full p-4 sm:p-5 flex items-center gap-3 sm:gap-4 text-left">
+              <div className="p-4 sm:p-5 flex items-center gap-3 sm:gap-4 text-left">
                 <div className={`w-11 h-11 sm:w-14 sm:h-14 rounded-xl ${c.bg} flex items-center justify-center flex-shrink-0`}><Icon className={`w-5 h-5 sm:w-7 sm:h-7 ${c.tx}`} /></div>
                 <div className="flex-1 min-w-0"><p className="font-bold text-slate-800 text-sm sm:text-base">{svc.name}</p><p className="text-xs sm:text-sm text-slate-500 truncate">{svc.short}</p></div>
-                <ChevronDown className={`w-5 h-5 text-slate-400 flex-shrink-0 transition-transform ${open ? "rotate-180" : ""}`} />
+                
               </button>
-              {open && (
+              {true && (
                 <div className={`px-4 sm:px-5 pb-4 sm:pb-5 border-t ${c.bd}`}>
                   <div className={`mt-3 sm:mt-4 rounded-xl overflow-hidden ${c.bg}`}>
                     <img

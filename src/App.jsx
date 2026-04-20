@@ -51,6 +51,22 @@ export default function App() {
   const [openFaq, setOpenFaq] = useState(null);
   const [showCompliance, setShowCompliance] = useState(false);
   const bookRef = useRef(null);
+  // Scroll animation observer
+  useEffect(() => {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("aos-visible");
+        }
+      });
+    }, { threshold: 0.1 });
+    document.querySelectorAll("[data-aos]").forEach(el => {
+      el.classList.add("aos-" + el.getAttribute("data-aos"));
+      observer.observe(el);
+    });
+    return () => observer.disconnect();
+  }, [done]);
+
   const svcRef = useRef(null);
   const priceRef = useRef(null);
   const aboutRef = useRef(null);
@@ -110,8 +126,11 @@ export default function App() {
             <button onClick={() => scrollTo(bookRef)} className="text-slate-600 hover:text-slate-900 text-sm font-medium">CONTACT</button>
           </div>
           <div className="flex items-center gap-3">
-            <a href={"tel:" + PHONE} className="bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-4 py-2 rounded transition hidden sm:block">{PHONE_DISPLAY}</a>
-            <a href={"sms:" + PHONE + "&body=Hi, I'm interested in backflow testing / sprinkler services at my home in Great Neck. Can you let me know availability?"} className="text-blue-600 sm:hidden"><Phone className="w-5 h-5" /></a>
+            <div className="hidden sm:block text-center">
+              <a href={"tel:" + PHONE} className="bg-blue-600 hover:bg-blue-700 text-white text-sm font-bold px-6 py-2.5 rounded-full transition inline-block">{PHONE_DISPLAY}</a>
+              <p className="text-blue-600 text-[10px] font-bold tracking-wider mt-1">CALL OR TEXT ANYTIME</p>
+            </div>
+            <a href={"tel:" + PHONE} className="text-blue-600 sm:hidden"><Phone className="w-5 h-5" /></a>
             <button onClick={() => setMenuOpen(!menuOpen)} className="md:hidden text-slate-600">{menuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}</button>
           </div>
         </div>
@@ -128,8 +147,8 @@ export default function App() {
       <div className="bg-slate-900 text-white">
         <div className="max-w-5xl mx-auto px-4 py-16 sm:py-24 flex flex-col md:flex-row items-center gap-10">
           <div className="flex-1">
-            <p className="text-blue-400 text-sm font-semibold tracking-widest mb-4">GREAT NECK BACKFLOW & SPRINKLER</p>
-            <h1 className="text-4xl sm:text-5xl font-bold leading-tight mb-4 tracking-tight">Annual Backflow Testing & Sprinkler Services</h1>
+            <p className="text-blue-400 text-sm font-semibold tracking-widest mb-4" data-aos="fade-right">GREAT NECK BACKFLOW & SPRINKLER</p>
+            <h1 className="text-4xl sm:text-5xl font-bold leading-tight mb-4 tracking-tight" data-aos="fade-right">Annual Backflow Testing & Sprinkler Services</h1>
             <p className="text-slate-400 text-lg max-w-xl mb-8">Professional backflow prevention testing for homes across the Great Neck peninsula. Compliant with Great Neck North Water Authority requirements.</p>
             <div className="flex flex-wrap gap-3">
               <button onClick={() => scrollTo(bookRef)} className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 transition"><Calendar className="w-5 h-5" /> Book Online</button>
@@ -137,9 +156,9 @@ export default function App() {
               <a href={"sms:" + PHONE + "&body=Hi, I'm interested in backflow testing / sprinkler services at my home in Great Neck. Can you let me know availability?"} className="inline-flex items-center gap-2 border border-white/20 text-white/80 font-semibold px-5 py-3 hover:bg-white/10 transition"><MessageSquare className="w-5 h-5" /> Text Us</a>
             </div>
           </div>
-          <div className="flex-1 hidden md:block">
+          <div className="flex-1 hidden md:block" data-aos="fade-left">
             <div className="relative">
-              <img src={SERVICES[0].img} alt="Backflow testing" className="w-full h-72 object-cover shadow-2xl border-2 border-white/10" />
+              <img src={SERVICES[1].img} alt="Backflow testing" className="w-full h-72 object-cover shadow-2xl border-2 border-white/10" />
               <div className="absolute -bottom-4 -left-4 bg-blue-600 px-5 py-3 shadow-lg">
                 <p className="text-white font-bold text-2xl">$60</p>
                 <p className="text-blue-200 text-xs">Starting price</p>
@@ -154,12 +173,16 @@ export default function App() {
       </div>
 
       {/* ABOUT */}
-      <div ref={aboutRef} className="max-w-5xl mx-auto px-4 py-16">
+      <div ref={aboutRef} className="max-w-5xl mx-auto px-4 py-16" data-aos="fade-up">
         <div className="flex flex-col items-center text-center gap-5">
-          <img src={HEADSHOT} alt={OWNER} className="w-28 h-28 rounded-full object-cover border-4 border-blue-600 shadow-xl" />
+          <img src={HEADSHOT} alt={OWNER} className="w-32 h-32 rounded-full object-cover border-4 border-blue-600 shadow-xl" />
           <div className="max-w-xl">
             <h3 className="font-bold text-xl text-slate-900 mb-3">About {OWNER}</h3>
-            <p className="text-slate-600 leading-relaxed">I'm 17 years old and currently in high school right here in Great Neck. I started this business because I watched my own family deal with the headache of getting someone out for backflow testing every year. Calling around, waiting forever, no one showing up when they say they will. I figured if it's this frustrating for us, it's the same for every homeowner on the peninsula. So I got certified, got the equipment, and now I'm offering a simple, reliable service to my neighbors. You book online, you know the price upfront, and I actually show up.</p>
+            <p className="text-slate-600 leading-relaxed mb-6">I'm 17 years old and currently in high school right here in Great Neck. I started this business because I watched my own family deal with the headache of getting someone out for backflow testing every year. Calling around, waiting forever, no one showing up when they say they will. I figured if it's this frustrating for us, it's the same for every homeowner on the peninsula. So I got certified, got the equipment, and now I'm offering a simple, reliable service to my neighbors. You book online, you know the price upfront, and I actually show up.</p>
+            <div className="flex items-center justify-center">
+              <a href={"tel:" + PHONE} className="inline-flex items-center gap-2 border-2 border-slate-300 text-slate-700 font-semibold px-6 py-3 hover:border-blue-600 hover:text-blue-600 transition"><Phone className="w-5 h-5" /> Call Me</a>
+              <a href={"sms:" + PHONE} className="inline-flex items-center gap-2 border-2 border-slate-300 border-l-0 text-slate-700 font-semibold px-6 py-3 hover:border-blue-600 hover:text-blue-600 transition"><MessageSquare className="w-5 h-5" /> Text Me</a>
+            </div>
           </div>
         </div>
       </div>
@@ -168,7 +191,7 @@ export default function App() {
       <div className="bg-slate-50 border-b border-slate-200">
         <div className="max-w-5xl mx-auto px-4 py-16">
           <div className="max-w-2xl">
-            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">Why Backflow Testing Matters.</h2>
+            <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4" data-aos="fade-up">Why Backflow Testing Matters.</h2>
             <p className="text-slate-600 text-lg leading-relaxed mb-6">Your backflow preventer is the only thing standing between your family's drinking water and potential contaminants like fertilizers, pool chemicals, or stagnant water. Annual testing is not just a safety best practice, it is a legal requirement for most properties in Great Neck and Nassau County.</p>
             <button onClick={() => setShowCompliance(!showCompliance)} className="w-full bg-white border-l-4 border-blue-600 p-5 text-left hover:shadow-md transition-shadow">
               <div className="flex items-center justify-between">
@@ -183,14 +206,14 @@ export default function App() {
 
       {/* 3-STEP PROCESS */}
       <div className="max-w-5xl mx-auto px-4 py-16">
-        <p className="text-blue-600 text-sm font-bold tracking-widest text-center mb-10">THE 3-STEP COMPLIANCE PROCESS</p>
+        <p className="text-blue-600 text-sm font-bold tracking-widest text-center mb-10" data-aos="fade-up">THE 3-STEP COMPLIANCE PROCESS</p>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {[
             { n: "01", title: "Book Online or Call", desc: "Schedule at greatneckbackflow.com or call us. Flexible scheduling to minimize disruption." },
             { n: "02", title: "We Test On Site", desc: "We arrive on time, test your device using calibrated equipment. Takes 10 to 15 minutes." },
             { n: "03", title: "We File the Paperwork", desc: "Your test results are submitted to your water authority. You're compliant. Done." },
           ].map(step => (
-            <div key={step.n} className="text-center">
+            <div key={step.n} className="text-center" data-aos="fade-up">
               <p className="text-5xl font-bold text-blue-100 mb-3">{step.n}</p>
               <p className="font-bold text-slate-800 mb-2">{step.title}</p>
               <p className="text-slate-500 text-sm">{step.desc}</p>
@@ -202,7 +225,7 @@ export default function App() {
       {/* SERVICES */}
       <div ref={svcRef} className="bg-slate-900 text-white">
         <div className="max-w-5xl mx-auto px-4 py-16">
-          <h2 className="text-3xl font-bold mb-8">Our Services</h2>
+          <h2 className="text-3xl font-bold mb-8" data-aos="fade-up">Our Services</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {SERVICES.map(svc => (
               <div key={svc.id} className="group bg-white/10 overflow-hidden cursor-pointer hover:bg-white/15 transition-all duration-300">
@@ -212,8 +235,8 @@ export default function App() {
                 </div>
                 <div className="p-5">
                   <h3 className="font-bold text-lg mb-2 group-hover:text-blue-400 transition-colors">{svc.name}</h3>
-                  <p className="text-slate-300 text-sm mb-3 max-h-0 overflow-hidden group-hover:max-h-40 transition-all duration-500 opacity-0 group-hover:opacity-100">{svc.details[0]}</p>
-                  <p className="text-blue-400 text-xs font-semibold">10 to 15 minutes · Hover for details</p>
+                  <p className="text-slate-300 text-sm mb-3">{svc.details[0]}</p>
+                  <p className="text-blue-400 text-xs font-semibold">10 to 15 minutes</p>
                 </div>
               </div>
             ))}
@@ -223,7 +246,7 @@ export default function App() {
 
       {/* PRICING */}
       <div ref={priceRef} className="max-w-5xl mx-auto px-4 py-16">
-        <h2 className="text-3xl font-bold text-slate-900 mb-2">Pricing</h2>
+        <h2 className="text-3xl font-bold text-slate-900 mb-2" data-aos="fade-up">Pricing</h2>
         <p className="text-slate-500 mb-8">The more you bundle, the more you save. No hidden fees.</p>
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-6">
           {[
@@ -249,7 +272,7 @@ export default function App() {
       <div className="bg-slate-900">
         <div ref={bookRef} className="max-w-3xl mx-auto px-4 py-16">
           <div className="bg-white p-6 sm:p-8 shadow-2xl">
-            <h2 className="text-2xl font-bold text-slate-900 mb-1">Book an Appointment</h2>
+            <h2 className="text-2xl font-bold text-slate-900 mb-1" data-aos="fade-up">Book an Appointment</h2>
             <div className="w-12 h-1 bg-blue-600 mb-6"></div>
 
             <Lbl n={1} t="Select services" />
@@ -301,7 +324,7 @@ export default function App() {
       {/* CTA BANNER */}
       <div className="bg-blue-600 text-white">
         <div className="max-w-5xl mx-auto px-4 py-14 text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-3">Receive a Notice?<br/>Let's Get You Compliant.</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold mb-3" data-aos="zoom-in">Receive a Notice?<br/>Let's Get You Compliant.</h2>
           <p className="text-blue-100 mb-6 max-w-lg mx-auto">Contact us today for a free quote or to schedule your annual backflow test. We offer competitive pricing and same-day electronic filing.</p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a href={"tel:" + PHONE} className="inline-flex items-center gap-2 text-2xl font-bold"><Phone className="w-6 h-6" /> {PHONE_DISPLAY}</a>
@@ -313,7 +336,7 @@ export default function App() {
       {/* NEIGHBORHOODS */}
       <div className="bg-slate-50">
         <div className="max-w-5xl mx-auto px-4 py-16 text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-3">Neighborhoods We Serve.</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-3" data-aos="fade-up">Neighborhoods We Serve.</h2>
           <p className="text-slate-500 mb-8">We are local residents who know the specific requirements for every village and water district in the area.</p>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
             {NEIGHBORHOODS.map(n => <div key={n} className="bg-white border border-slate-200 rounded-lg py-3 px-4 text-slate-700 font-medium text-sm shadow-sm hover:shadow-md hover:border-blue-300 hover:text-blue-700 transition-all duration-200 cursor-default">{n}</div>)}
@@ -323,7 +346,7 @@ export default function App() {
 
       {/* FAQ */}
       <div className="max-w-5xl mx-auto px-4 py-16">
-        <h2 className="text-3xl font-bold text-slate-900 mb-2 text-center">Frequently Asked Questions</h2>
+        <h2 className="text-3xl font-bold text-slate-900 mb-2 text-center" data-aos="fade-up">Frequently Asked Questions</h2>
         <p className="text-slate-500 text-center mb-8">Click to expand</p>
         <div className="max-w-2xl mx-auto space-y-2">
           {[
@@ -356,7 +379,7 @@ export default function App() {
               <div><p className="font-bold text-white text-sm">GREAT NECK BACKFLOW & SPRINKLER</p></div>
             </div>
             <div className="text-center sm:text-right">
-              <p className="text-white font-bold text-lg">{PHONE_DISPLAY}</p>
+              <a href={"tel:" + PHONE} className="text-white font-bold text-lg hover:text-blue-400 transition">{PHONE_DISPLAY}</a>
               <p className="text-slate-400 text-sm">greatneckbackflow.com</p>
             </div>
           </div>

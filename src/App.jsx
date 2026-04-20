@@ -124,14 +124,40 @@ export default function App() {
 
       {/* HERO */}
       <div className="bg-slate-900 text-white">
-        <div className="max-w-5xl mx-auto px-4 py-16 sm:py-24">
-          <p className="text-blue-400 text-sm font-semibold tracking-widest mb-4">GREAT NECK BACKFLOW & SPRINKLER</p>
-          <h1 className="text-4xl sm:text-6xl font-bold leading-tight mb-4 tracking-tight">Annual Backflow<br/>Testing & Sprinkler<br/>Services</h1>
-          <p className="text-slate-400 text-lg max-w-xl mb-8">Professional backflow prevention testing for homes across the Great Neck peninsula. Compliant with Great Neck North Water Authority requirements.</p>
-          <div className="flex flex-wrap gap-3">
-            <button onClick={() => scrollTo(bookRef)} className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 transition"><Calendar className="w-5 h-5" /> Book Online</button>
-            <a href={"tel:" + PHONE} className="inline-flex items-center gap-2 border border-white/30 text-white font-semibold px-6 py-3 hover:bg-white/10 transition"><Phone className="w-5 h-5" /> Call {PHONE_DISPLAY}</a>
-            <a href={"sms:" + PHONE + "&body=Hi, I\'m interested in backflow testing / sprinkler services at my home in Great Neck. Can you let me know availability?"} className="inline-flex items-center gap-2 border border-white/20 text-white/80 font-semibold px-5 py-3 hover:bg-white/10 transition"><MessageSquare className="w-5 h-5" /> Text Us</a>
+        <div className="max-w-5xl mx-auto px-4 py-16 sm:py-24 flex flex-col md:flex-row items-center gap-10">
+          <div className="flex-1">
+            <p className="text-blue-400 text-sm font-semibold tracking-widest mb-4">GREAT NECK BACKFLOW & SPRINKLER</p>
+            <h1 className="text-4xl sm:text-5xl font-bold leading-tight mb-4 tracking-tight">Annual Backflow Testing & Sprinkler Services</h1>
+            <p className="text-slate-400 text-lg max-w-xl mb-8">Professional backflow prevention testing for homes across the Great Neck peninsula. Compliant with Great Neck North Water Authority requirements.</p>
+            <div className="flex flex-wrap gap-3">
+              <button onClick={() => scrollTo(bookRef)} className="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 transition"><Calendar className="w-5 h-5" /> Book Online</button>
+              <a href={"tel:" + PHONE} className="inline-flex items-center gap-2 border border-white/30 text-white font-semibold px-6 py-3 hover:bg-white/10 transition"><Phone className="w-5 h-5" /> Call {PHONE_DISPLAY}</a>
+              <a href={"sms:" + PHONE + "&body=Hi, I\\'m interested in backflow testing / sprinkler services at my home in Great Neck. Can you let me know availability?"} className="inline-flex items-center gap-2 border border-white/20 text-white/80 font-semibold px-5 py-3 hover:bg-white/10 transition"><MessageSquare className="w-5 h-5" /> Text Us</a>
+            </div>
+          </div>
+          <div className="flex-1 hidden md:block">
+            <div className="relative">
+              <img src={SERVICES[0].img} alt="Backflow testing" className="w-full h-72 object-cover shadow-2xl border-2 border-white/10" />
+              <div className="absolute -bottom-4 -left-4 bg-blue-600 px-5 py-3 shadow-lg">
+                <p className="text-white font-bold text-2xl">$60</p>
+                <p className="text-blue-200 text-xs">Starting price</p>
+              </div>
+              <div className="absolute -top-3 -right-3 bg-white px-4 py-2 shadow-lg">
+                <p className="text-slate-900 font-bold text-sm">10-15 min</p>
+                <p className="text-slate-500 text-xs">Per test</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* ABOUT */}
+      <div ref={aboutRef} className="max-w-5xl mx-auto px-4 py-16">
+        <div className="flex flex-col items-center text-center gap-5">
+          <img src={HEADSHOT} alt={OWNER} className="w-24 h-24 rounded-full object-cover border-4 border-blue-600 shadow-lg" />
+          <div className="max-w-xl">
+            <h3 className="font-bold text-xl text-slate-900 mb-3">About {OWNER}</h3>
+            <p className="text-slate-600 leading-relaxed">I\'m 17 years old and currently in high school right here in Great Neck. I started this business because I watched my own family deal with the headache of getting someone out for backflow testing every year. Calling around, waiting forever, no one showing up when they say they will. I figured if it\'s this frustrating for us, it\'s the same for every homeowner on the peninsula. So I got certified, got the equipment, and now I\'m offering a simple, reliable service to my neighbors. You book online, you know the price upfront, and I actually show up.</p>
           </div>
         </div>
       </div>
@@ -211,40 +237,6 @@ export default function App() {
         </div>
       </div>
 
-      {/* CTA BANNER */}
-      <div className="bg-blue-600 text-white">
-        <div className="max-w-5xl mx-auto px-4 py-14 text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold mb-3">Receive a Notice?<br/>Let\'s Get You Compliant.</h2>
-          <p className="text-blue-100 mb-6 max-w-lg mx-auto">Contact us today for a free quote or to schedule your annual backflow test. We offer competitive pricing and same-day electronic filing.</p>
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <a href={"tel:" + PHONE} className="inline-flex items-center gap-2 text-2xl font-bold"><Phone className="w-6 h-6" /> {PHONE_DISPLAY}</a>
-          </div>
-          <p className="text-blue-200 text-xs mt-4">Great Neck North Water Authority Compliant</p>
-        </div>
-      </div>
-
-      {/* NEIGHBORHOODS */}
-      <div className="bg-slate-50">
-        <div className="max-w-5xl mx-auto px-4 py-16 text-center">
-          <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-3">Neighborhoods We Serve.</h2>
-          <p className="text-slate-500 mb-8">We are local residents who know the specific requirements for every village and water district in the area.</p>
-          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
-            {NEIGHBORHOODS.map(n => <div key={n} className="bg-white border border-slate-200 rounded-lg py-3 px-4 text-slate-700 font-medium text-sm shadow-sm">{n}</div>)}
-          </div>
-        </div>
-      </div>
-
-      {/* ABOUT */}
-      <div ref={aboutRef} className="max-w-5xl mx-auto px-4 py-16">
-        <div className="flex flex-col items-center text-center gap-5">
-          <img src={HEADSHOT} alt={OWNER} className="w-24 h-24 rounded-full object-cover border-4 border-blue-600 shadow-lg" />
-          <div className="max-w-xl">
-            <h3 className="font-bold text-xl text-slate-900 mb-3">About {OWNER}</h3>
-            <p className="text-slate-600 leading-relaxed">I\'m 17 years old and currently in high school right here in Great Neck. I started this business because I watched my own family deal with the headache of getting someone out for backflow testing every year. Calling around, waiting forever, no one showing up when they say they will. I figured if it\'s this frustrating for us, it\'s the same for every homeowner on the peninsula. So I got certified, got the equipment, and now I\'m offering a simple, reliable service to my neighbors. You book online, you know the price upfront, and I actually show up.</p>
-          </div>
-        </div>
-      </div>
-
       {/* BOOKING FORM */}
       <div className="bg-slate-900">
         <div ref={bookRef} className="max-w-3xl mx-auto px-4 py-16">
@@ -298,6 +290,29 @@ export default function App() {
         </div>
       </div>
 
+      {/* CTA BANNER */}
+      <div className="bg-blue-600 text-white">
+        <div className="max-w-5xl mx-auto px-4 py-14 text-center">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-3">Receive a Notice?<br/>Let\'s Get You Compliant.</h2>
+          <p className="text-blue-100 mb-6 max-w-lg mx-auto">Contact us today for a free quote or to schedule your annual backflow test. We offer competitive pricing and same-day electronic filing.</p>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a href={"tel:" + PHONE} className="inline-flex items-center gap-2 text-2xl font-bold"><Phone className="w-6 h-6" /> {PHONE_DISPLAY}</a>
+          </div>
+          <p className="text-blue-200 text-xs mt-4">Great Neck North Water Authority Compliant</p>
+        </div>
+      </div>
+
+      {/* NEIGHBORHOODS */}
+      <div className="bg-slate-50">
+        <div className="max-w-5xl mx-auto px-4 py-16 text-center">
+          <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-3">Neighborhoods We Serve.</h2>
+          <p className="text-slate-500 mb-8">We are local residents who know the specific requirements for every village and water district in the area.</p>
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
+            {NEIGHBORHOODS.map(n => <div key={n} className="bg-white border border-slate-200 rounded-lg py-3 px-4 text-slate-700 font-medium text-sm shadow-sm">{n}</div>)}
+          </div>
+        </div>
+      </div>
+
       {/* FOOTER */}
       <footer className="bg-slate-900 border-t border-slate-700">
         <div className="max-w-5xl mx-auto px-4 py-10">
@@ -317,7 +332,8 @@ export default function App() {
           </div>
         </div>
       </footer>
-    </div>
+
+          </div>
   );
 }
 

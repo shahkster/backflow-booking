@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Droplet, Check, User, Phone, Mail, MessageSquare, ShieldCheck, Award, DollarSign, Sparkles, Tag, ArrowDown, ShowerHead, MapPin, Menu, X, ChevronRight, Droplets, FileCheck, ClipboardCheck, Calendar, ChevronDown } from “lucide-react”;
+import { Droplet, Check, User, Phone, Mail, MessageSquare, ShieldCheck, Award, DollarSign, Sparkles, Tag, ArrowDown, ShowerHead, MapPin, Menu, X, ChevronRight, Droplets, FileCheck, ClipboardCheck, Calendar, ChevronDown } from "lucide-react";
 
 const WEB3FORMS_KEY = "9468d723-f46e-4981-b1c1-4545209072f7";
 const GOOGLE_MAPS_KEY = "AIzaSyDPfspCY5u7j_ApTM-K7qugyAXvSApIXEk";

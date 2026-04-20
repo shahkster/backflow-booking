@@ -39,7 +39,7 @@ if (!inputRef.current || autocompleteRef.current) return;
 autocompleteRef.current = new window.google.maps.places.Autocomplete(inputRef.current, { types: ["address"], componentRestrictions: { country: "us" }, fields: ["formatted_address"] });
 autocompleteRef.current.addListener("place_changed", () => { const place = autocompleteRef.current.getPlace(); if (place?.formatted_address) onChange(place.formatted_address); });
 }
-return (<div className="relative"><div className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"><MapPin className="w-4 h-4" /></div><input ref={inputRef} type="text" placeholder="Start typing your address…" value={value} onChange={e => onChange(e.target.value)} className="w-full pl-10 pr-3 py-3.5 border border-slate-300 focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20 focus:outline-none text-sm transition bg-white" autoComplete="street-address" name="address" /></div>);
+return (<div className="relative"><div className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400"><MapPin className="w-4 h-4" /></div><input ref={inputRef} type="text" placeholder="Start typing your address. . ." value={value} onChange={e => onChange(e.target.value)} className="w-full pl-10 pr-3 py-3.5 border border-slate-300 focus:border-blue-600 focus:ring-2 focus:ring-blue-600/20 focus:outline-none text-sm transition bg-white" autoComplete="street-address" name="address" /></div>);
 }
 
 export default function App() {
@@ -72,7 +72,7 @@ const svcRef = useRef(null);
 const priceRef = useRef(null);
 const aboutRef = useRef(null);
 const tot = price(sel.length);
-function toggle(svc) { const has = sel.find(s => s.id === svc.id); setSel(has ? sel.filter(s => s.id !== svc.id) : […sel, svc]); }
+function toggle(svc) { const has = sel.find(s => s.id === svc.id); setSel(has ? sel.filter(s => s.id !== svc.id) : [. . .sel, svc]); }
 function scrollTo(ref) { ref.current?.scrollIntoView({ behavior: "smooth" }); setMenuOpen(false); }
 const allFilled = f.name && f.addr && f.phone && f.email && sel.length > 0;
 
@@ -304,10 +304,10 @@ return (
         {sel.length > 0 && (<>
           <Lbl n={2} t="Your information" />
           <div className="space-y-3 mb-4">
-            <Inp icon={<User className="w-4 h-4" />} ph="Full name" v={f.name} set={v => setF({ ...f, name: v })} />
-            <AddressInput value={f.addr} onChange={v => setF(prev => ({ ...prev, addr: v }))} />
-            <Inp icon={<Phone className="w-4 h-4" />} ph="Phone number" v={f.phone} set={v => setF({ ...f, phone: v })} type="tel" />
-            <Inp icon={<Mail className="w-4 h-4" />} ph="Email" v={f.email} set={v => setF({ ...f, email: v })} type="email" />
+            <Inp icon={<User className="w-4 h-4" />} ph="Full name" v={f.name} set={v => setF({ . . .f, name: v })} />
+            <AddressInput value={f.addr} onChange={v => setF(prev => ({ . . .prev, addr: v }))} />
+            <Inp icon={<Phone className="w-4 h-4" />} ph="Phone number" v={f.phone} set={v => setF({ . . .f, phone: v })} type="tel" />
+            <Inp icon={<Mail className="w-4 h-4" />} ph="Email" v={f.email} set={v => setF({ . . .f, email: v })} type="email" />
           </div>
 
           <div className="bg-slate-900 p-4 mb-4 text-white">
@@ -319,7 +319,7 @@ return (
 
           {formError && <p className="text-red-500 text-sm mb-3">{formError}</p>}
           <button onClick={submit} disabled={busy} className="w-full bg-blue-600 hover:bg-blue-700 disabled:bg-slate-300 text-white font-semibold py-4 text-sm sm:text-base transition">
-            {busy ? "Submitting..." : "Book Now · $" + tot}
+            {busy ? "Submitting. . ." : "Book Now · $" + tot}
           </button>
         </>)}
       </div>

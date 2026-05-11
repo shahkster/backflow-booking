@@ -23,7 +23,7 @@ const NEIGHBORHOODS = [
   { name: "Great Neck Plaza", url: "https://www.greatneckplaza.net" },
   { name: "Kings Point", url: "https://www.villageofkingspoint.org" },
   { name: "Saddle Rock", url: "https://saddlerockny.gov" },
-  { name: "Saddle Rock Estates", url: "https://www.villageofkingspoint.org" },
+  { name: "Saddle Rock Estates", url: "https://www.waterauthorityofgreatnecknorth.com" },
   { name: "Kensington", url: "https://vok-ny.com" },
   { name: "Thomaston", url: "https://villageofthomastonny.gov" },
   { name: "Lake Success", url: "https://www.villageoflakesuccess.com" },
